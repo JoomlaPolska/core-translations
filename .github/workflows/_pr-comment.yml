@@ -28,4 +28,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           header: En_GBLocalise-class
           number: ${{ steps.pr_number.outputs.pr_number }}
-          path: ./En_GBLocalise-logs/joomla_v4/translations/package/logs/En_GBLocalise_comment.txt
+          path: ./En_GBLocalise-logs/En_GBLocalise_comment.txt
