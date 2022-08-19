@@ -16,7 +16,7 @@ jobs:
 
       - name: Get PR number
         id: pr_number
-        run: echo "::set-output name=pr_number::$(cat ./En_GBLocalise-logs/joomla_v4/translations/package/logs/PR_number.txt)"
+        run: echo "::set-output name=pr_number::$(cat ./En_GBLocalise-logs/PR_number.txt)"
 
       - name: Get PR sha
         id: pr_sha
