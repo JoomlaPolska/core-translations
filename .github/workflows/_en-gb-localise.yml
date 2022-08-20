@@ -42,14 +42,3 @@ jobs:
       with:
         name: En_GBLocalise-logs
         path: ./joomla_v4/translations/package/logs
-
-    - name: fail workflow
-      if: steps.check_result_file.outputs.files_exists == 'true'
-      run: exit 1
-
-    - name: Upload En_GBLocalise-logs
-      if: ${{ always() }}
-      uses: actions/upload-artifact@v2
-      with:
-        name: En_GBLocalise-logs
-        path: ./joomla_v4/translations/package/logs
