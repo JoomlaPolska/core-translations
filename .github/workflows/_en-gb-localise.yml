@@ -25,18 +25,23 @@ jobs:
         files: ./joomla_v4/translations/package/logs/En_GBLocalise_result.txt
 
     - name: Save PR number
-      if: ${{ always() }}
+      if: steps.check_result_file.outputs.files_exists == 'true'
       run: echo ${{ github.event.pull_request.number }} > ./joomla_v4/translations/package/logs/PR_number.txt
       
     - name: Save PR sha
-      if: ${{ always() }}
+      if: steps.check_result_file.outputs.files_exists == 'true'
       run: echo ${{ github.sha }} > ./joomla_v4/translations/package/logs/PR_sha.txt
 
-    - name: Prepare issue commebt
-      run: |
-          run: |
-          echo "The following translation files contain the En_GBLocalise class on ${{ github.sha }}" >> ./joomla_v4/translations/package/logs/En_GBLocalise_comment.txt
-          cat ./joomla_v4/translations/package/logs/En_GBLocalise_result.txt >> ./joomla_v4/translations/package/logs/En_GBLocalise_comment.txt
+    - name: fail workflow
+      if: steps.check_result_file.outputs.files_exists == 'true'
+      run: exit 1
+
+    - name: Upload En_GBLocalise-logs
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: En_GBLocalise-logs
+        path: ./joomla_v4/translations/package/logs
 
     - name: fail workflow
       if: steps.check_result_file.outputs.files_exists == 'true'
