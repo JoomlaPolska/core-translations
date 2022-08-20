@@ -19,10 +19,6 @@ jobs:
         id: pr_number
         run: echo "::set-output name=pr_number::$(cat ./En_GBLocalise-logs/PR_number.txt)"
 
-      - name: Get PR sha
-        id: pr_sha
-        run: echo "::set-output name=pr_number::$(cat ./En_GBLocalise-logs/PR_sha.txt)"
-        
       - name: Post PR comment
         uses: marocchino/sticky-pull-request-comment@v2
         with:
