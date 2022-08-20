@@ -34,8 +34,10 @@ jobs:
 
     - name: Prepare issue commebt
       run: |
-          echo "The following translation files contain the En_GBLocalise class on ${{ github.sha }}" >> ./joomla_v4/translations/package/logs/En_GBLocalise_comment.txt
-          cat ./joomla_v4/translations/package/logs/En_GBLocalise_result.txt >> ./joomla_v4/translations/package/logs/En_GBLocalise_comment.txt
+          echo "The following translation files contain the En_GBLocalise class on ${{ github.sha }}" >> ./joomla_v4/translations/package/logs/En_GBLocalise_comment.md
+          echo "```" >> ./joomla_v4/translations/package/logs/En_GBLocalise_comment.md
+          cat ./joomla_v4/translations/package/logs/En_GBLocalise_result.txt >> ./joomla_v4/translations/package/logs/En_GBLocalise_comment.md
+          echo "```" >> ./joomla_v4/translations/package/logs/En_GBLocalise_comment.md
 
     - name: fail workflow
       if: steps.check_result_file.outputs.files_exists == 'true'
