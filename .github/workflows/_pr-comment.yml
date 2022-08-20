@@ -35,4 +35,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           header: En_GBLocalise-class
           number: ${{ steps.pr_number.outputs.pr_number }}
-          path: ./En_GBLocalise-logs/En_GBLocalise_comment.md
+          message: |
+                The following translation files contain the En_GBLocalise class on ${{ steps.prsha.outputs.pr_sha }}
+                ```
+                $(cat ./En_GBLocalise_result.txt)
+                ```
