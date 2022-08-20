@@ -26,8 +26,8 @@ jobs:
       
       - name: Prepare issue comment
         run: |
-          echo -e "The following translation files contain the En_GBLocalise class on ${{ steps.prsha.outputs.pr_sha }}\n```" >> ./joomla_v4/translations/package/logs/En_GBLocalise_comment.txt
-          $(cat ./En_GBLocalise_result.txt)\n``` >> ./En_GBLocalise_comment.md
+          echo -e "The following translation files contain the En_GBLocalise class on ${{ steps.prsha.outputs.pr_sha }}\n```$(cat ./En_GBLocalise_result.txt)\n```" >> ./joomla_v4/translations/package/logs/En_GBLocalise_comment.txt
+           >> ./En_GBLocalise_comment.md
 
       - name: Post PR comment
         uses: marocchino/sticky-pull-request-comment@v2
