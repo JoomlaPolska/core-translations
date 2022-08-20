@@ -13,20 +13,26 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           workflow: _en-gb-localise.yml
-          workflow_conclusion: ''
+          workflow_conclusion: 'failure'
 
       - name: Get PR number
         id: pr_number
         run: echo "::set-output name=pr_number::$(cat ./En_GBLocalise-logs/PR_number.txt)"
-
-      - name: Get PR sha
-        id: pr_sha
-        run: echo "::set-output name=pr_number::$(cat ./En_GBLocalise-logs/PR_sha.txt)"
         
+      - name: Get PR number
+        id: pr_sha
+        run: echo "::set-output name=pr_sha::$(cat ./En_GBLocalise-logs/PR_sha.txt)"
+      
+      
+      - name: Prepare issue comment
+        run: |
+          echo -e "The following translation files contain the En_GBLocalise class on ${{ steps.prsha.outputs.pr_sha }}\n```" >> ./joomla_v4/translations/package/logs/En_GBLocalise_comment.txt
+          $(cat ./En_GBLocalise_result.txt)\n``` >> ./En_GBLocalise_comment.md
+
       - name: Post PR comment
         uses: marocchino/sticky-pull-request-comment@v2
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           header: En_GBLocalise-class
           number: ${{ steps.pr_number.outputs.pr_number }}
-          path: ./En_GBLocalise-logs/En_GBLocalise_comment.txt
+          path: ./En_GBLocalise-logs/En_GBLocalise_comment.md
