@@ -127,7 +127,7 @@ jobs:
 
 
       - name: Crowdin Download ${{ matrix.name }}
-        uses: crowdin/github-action@v2.15.2
+        uses: crowdin/github-action@v2.16.0
         with:
           config: 'Configurations/Crowdin-J5-Installer.yml'
           crowdin_branch_name: JoomlaV5
