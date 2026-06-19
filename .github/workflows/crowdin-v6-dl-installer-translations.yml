@@ -136,7 +136,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Crowdin Download
         uses: crowdin/github-action@v2.15.2
         with:

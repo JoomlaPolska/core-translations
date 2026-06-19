@@ -27,7 +27,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
 
     - name: Crowdin Upload ${{ matrix.name }}
       uses: crowdin/github-action@v2.15.2
